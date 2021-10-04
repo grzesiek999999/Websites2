@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form method="get">
+        {{ filter.form.as_p }}
+        <button class ="btn btn-primary" type="submit">Search</button>
+
+    </form>
+   <table class = 'table'?>
+       <thead>
+        <tr>
+           <th>URL</th>
+           <th>TITLE</th>
+           <td><a href ="{% url "index" %}">ALEXA RANK</a></td>
+           <th>CATEGORY</th>
+            <th>DETAIL VIEW</th>
+        </tr>
+       </thead>
+    {% for instance in filter.qs %}
+        <tr>
+            <td>{{instance.url }}</td>
+            <td>{{ instance.title }}</td>
+            <td>{{ instance.alexa_rank }}</td>
+            <td>{{ instance.category }}</td>
+            <td><a href ="{% url 'detail' instance.id %}">Detail View</a></td>
+        </tr>
+    {% endfor %}
+   </table>
+</body>
+</html>
